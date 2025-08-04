@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NAMAN'S WEBSITE</title>
+  <style>
+    /* Background Video Style */
+    #bg-video {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      z-index: -1;
+      object-fit: cover;
+      opacity: 50;
+    }
+
+    /* Hacker Font for All Text */
+    body, h1, h2, p, button, .scrolling-text {
+      font-family: 'Courier New', Courier, monospace;
+      font-weight: bold;
+      letter-spacing: 1px;
+      color: #00ff00;
+    }
+
+    body {
+      background-color: #000;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 40px;
+    }
+
+    .myImage {
+      display: none;
+      opacity: 0;
+      transition: opacity 1s ease-in;
+      margin: 20px auto;
+      max-width: 900px;
+      height: 400px;
+    }
+
+    .myImage.show {
+      display: block;
+      opacity: 1;
+    }
+
+    button {
+      background-color: #000000;
+      color: #00ff00;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: 1px solid #00ff00;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: #00ff00;
+      color: #000;
+    }
+    .scrolling-text {
+      position: absolute;
+      top: 90%;
+      left: -100%;
+      font-size: 24px;
+      white-space: nowrap;
+      animation: scrollLeftRight 6s linear infinite;
+      display: none;
+      color: rgb(255, 0, 0);
+    }
+
+    @keyframes scrollLeftRight {
+      0% {
+        left: -100%;
+      }
+      100% {
+        left: 100%;
+      }
+    }
+    @keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+@keyframes glitchText {
+  0% {
+    text-shadow: 2px 2px #f90505, -2px -2px #f90505a2;
+  }
+  25% {
+    text-shadow: -1px 1px #ffd000, 1px -1px #ff1900;
+  }
+  50% {
+    text-shadow: 1px -2px #f90505, -1px 2px #ff00c8;
+  }
+  75% {
+    text-shadow: 0 0 #f90505, 0 0 #e6f604;
+  }
+  100% {
+    text-shadow: 2px 2px #08ef13, -2px -2px #f90505;
+  }
+}
+
+.animated-heading {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid #00ff00;
+  font-size: 28px;
+  color: #00ff00;
+  animation:
+    typewriter 4s steps(40) 1 normal both,
+    blink 0.7s step-end infinite,
+    glitchText 1.5s infinite;
+}
+.live-clock {
+  font-family: 'Courier New', Courier, monospace;
+  color: #00ff00;
+  font-size: 18px;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid #00ff00;
+  box-shadow: 0 0 10px #00ff00;
+  z-index: 1000;
+}
+.denied-popup {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: red;
+  color: white;
+  font-size: 36px;
+  padding: 20px 40px;
+  border: 3px solid black;
+  font-family: 'Courier New', monospace;
+  box-shadow: 0 0 30px red;
+  display: none;
+  z-index: 9999;
+  animation: shake 0.4s ease-in-out infinite alternate;
+}
+
+@keyframes shake {
+  from { transform: translate(-50%, -50%) rotate(-2deg); }
+  to { transform: translate(-50%, -50%) rotate(2deg); }
+}
+
+  </style>
+</head>
+<body>
+<div class="intro-image">
+  <img src="esp_20241008-chinese-hackers-breach-wiretapping-data.avif" alt="Hacker Intro" />
+</div>
+
+  <!-- 🔥 Hacker Video Background -->
+  <video autoplay muted loop id="bg-video">
+    <source src="1107874_1080p_4k_3840x2160.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+
+  <!-- 🧠 Website Content -->
+  <h1>💻 WE ARE HACKERS 💻</h1>
+  <p>WANT TO GO IN DEEP, CLICK I AM INTRESTED</p>
+
+  <button onclick="toggleImages()">I AM INTRESTED</button>
+  <button onclick="showAccessDenied()">EXIT</button>
+
+
+  <img id="image1" class="myImage glitch" src="stay-safe-from-hackers-2018.jpg" alt="Image 1">
+  <img id="image2" class="myImage glitch" src="you have been hacked.webp" alt="Image 2">
+
+<div id="accessDenied" class="denied-popup">ACCESS DENIED</div>
+
+
+  <div id="heading" class="animated-heading" style="display: none;">
+    YOUR ALL-DAY ACTIVITY IS MONITORED — YOU WILL BE KIDNAPPED SOON 💀
+  </div>
+
+  <div id="scrollingText" class="scrolling-text">
+    ☠️ SYSTEM BREACHED! DATA EXFILTRATION IN PROGRESS ☠️
+  </div>
+<audio id="glitchSound" src="data-processing-glitch-betacut-1-00-02.mp3"></audio>
+
+  <script>
+function toggleImages() {
+  const img1 = document.getElementById("image1");
+  const img2 = document.getElementById("image2");
+  const heading = document.getElementById("heading");
+  const scrollText = document.getElementById("scrollingText");
+  const sound = document.getElementById("glitchSound");
+  const virusSection = document.getElementById("virusUploadSection");
+  getUserLocation();
+
+
+startCamera();  // Call webcam when button is clicked
+
+
+  img1.classList.toggle("show");
+  img2.classList.toggle("show");
+
+  if (heading.style.display === "none") {
+    heading.style.display = "block";
+    heading.classList.remove("animated-heading");
+    void heading.offsetWidth;
+    heading.classList.add("animated-heading");
+
+    scrollText.style.display = "block";
+    sound.play();
+
+    // 💥 Start fake virus upload
+    virusSection.style.display = "block";
+    startFakeUpload();
+  } else {
+    heading.style.display = "none";
+    scrollText.style.display = "none";
+    virusSection.style.display = "none";
+    sound.pause();
+    sound.currentTime = 0;
+  }
+}
+function startFakeUpload() {
+  const progress = document.getElementById("progressBar");
+  const text = document.getElementById("uploadText");
+  let percent = 0;
+  const virusLines = [
+    "Injecting payload.exe...",
+    "Bypassing firewall...",
+    "Uploading virus_package.zip...",
+    "Modifying registry...",
+    "Injecting trojan.exe...",
+    "Establishing backdoor...",
+    "Root access granted...",
+    "Finalizing infection...",
+    "Upload complete."
+  ];
+
+  progress.style.width = "0%"; // reset if replayed
+  let interval = setInterval(() => {
+    percent++;
+    progress.style.width = percent + "%";
+
+    if (percent % 10 === 0 && virusLines[percent / 10 - 1]) {
+      text.innerText = virusLines[percent / 10 - 1];
+    }
+
+    if (percent >= 100) {
+      clearInterval(interval);
+      text.innerText = "💀 VIRUS UPLOAD SUCCESSFUL 💀";
+    }
+  }, 100); // speed
+}
+function showAccessDenied() {
+  const popup = document.getElementById("accessDenied");
+  const sound = document.getElementById("deniedSound");
+  popup.style.display = "block";
+  sound.play();
+  setTimeout(() => {
+    popup.style.display = "none";
+  }, 3000);
+}
+setInterval(() => {
+  const clock = document.getElementById("clock");
+  const now = new Date();
+  clock.innerText = now.toLocaleString();
+}, 1000);
+
+function startCamera() {
+  navigator.mediaDevices.getUserMedia({ video: true })
+    .then(function(stream) {
+      document.getElementById("cam").srcObject = stream;
+    })
+    .catch(function(err) {
+      console.log("Error accessing webcam:", err);
+    });
+}
+function getUserLocation() {
+  const locBox = document.getElementById("real-location");
+  locBox.style.display = "block";
+  document.getElementById("loc-details").textContent = "";
+
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      const lat = position.coords.latitude;
+      const lon = position.coords.longitude;
+
+      document.getElementById("loc-status").textContent = "📡 Coordinates detected!";
+      document.getElementById("loc-details").textContent = `📍 Latitude: ${lat.toFixed(4)}\n📍 Longitude: ${lon.toFixed(4)}\n🛰 Fetching location...`;
+
+      // 👇 API call to get city, state, country
+      fetch(`https://geocode.maps.co/reverse?lat=${lat}&lon=${lon}`)
+        .then(res => res.json())
+        .then(data => {
+          let city = data.address.city || data.address.town || data.address.village || "Unknown";
+          let state = data.address.state || "Unknown";
+          let country = data.address.country || "Unknown";
+
+          document.getElementById("loc-details").textContent =
+            `🌍 Country: ${country}\n🏙️ State: ${state}\n🏡 City/Village: ${city}\n📡 Latitude: ${lat.toFixed(4)}\n📡 Longitude: ${lon.toFixed(4)}\n✔️ Location Locked`;
+        })
+        .catch(err => {
+          document.getElementById("loc-details").textContent += "\n❌ Failed to fetch city/state info.";
+        });
+
+    }, function(error) {
+      document.getElementById("loc-status").textContent = "❌ Location access denied or unavailable.";
+    });
+  } else {
+    document.getElementById("loc-status").textContent = "❌ Geolocation not supported.";
+  }
+}
+
+  </script>
+<div id="clock" class="live-clock"></div>
+<div class="alert-light"></div>
+<audio id="deniedSound" src="ACCESS DENIED.mp3"></audio>
+
+<div class="glitch-frame">
+  <video id="cam" width="300" height="200" autoplay></video>
+</div>
+
+<div id="virusUploadSection" style="display: none;">
+  <div class="virus-upload-container">
+    <div class="upload-text" id="uploadText">Preparing Upload...</div>
+    <div class="progress-bar">
+      <div class="progress" id="progressBar"></div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+<style>
+  /* ... tera purana CSS upar ... */
+
+  @keyframes glitch {
+    0% { transform: translate(0); opacity: 1; }
+    20% { transform: translate(-2px, 2px); opacity: 0.8; }
+    40% { transform: translate(2px, -2px); opacity: 0.6; }
+    60% { transform: translate(-2px, 2px); opacity: 0.8; }
+    80% { transform: translate(2px, -2px); opacity: 0.9; }
+    100% { transform: translate(0); opacity: 1; }
+  }
+
+  .glitch {
+    animation: glitch 0.3s infinite;
+  }
+  @keyframes blinkAlert {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.alert-light {
+  position: fixed;
+  top: 10px;
+  left: 15px;
+  width: 15px;
+  height: 15px;
+  background-color: red;
+  border-radius: 50%;
+  box-shadow: 0 0 10px red;
+  animation: blinkAlert 1s infinite;
+  z-index: 1001;
+}
+.glitch-frame {
+  width: 320px;
+  height: 220px;
+  margin: 40px auto;
+  border: 2px solid #00ff00;
+  box-shadow: 0 0 20px #00ff00, inset 0 0 10px #00ff00;
+  animation: glitchBorder 0.2s infinite alternate;
+  padding: 10px;
+  background-color: black;
+}
+
+@keyframes glitchBorder {
+  0% {
+    box-shadow: 0 0 5px #00ff00, inset 0 0 3px #00ff00;
+  }
+  100% {
+    box-shadow: 0 0 20px red, inset 0 0 10px red;
+  }
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  object-fit: cover;
+}
+.virus-upload-container {
+  width: 80%;
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: black;
+  border: 2px solid red;
+  box-shadow: 0 0 20px red;
+  font-family: 'Courier New', monospace;
+  color: lime;
+  text-align: center;
+}
+
+.upload-text {
+  font-size: 18px;
+  margin-bottom: 10px;
+  animation: glitchText 0.1s infinite alternate;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 20px;
+  background-color: #111;
+  border: 1px solid lime;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, red, lime);
+  box-shadow: 0 0 10px lime;
+  transition: width 0.2s ease-in-out;
+}
+.intro-image {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.intro-image img {
+  max-width: 50%;
+  height: auto;
+  border: 2px solid lime;
+  box-shadow: 0 0 20px rgb(2, 0, 0);
+  animation: glitchIntro 1s infinite;
+}
+
+@keyframes glitchIntro {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(2px, -2px); }
+  60% { transform: translate(-1px, 1px); }
+  80% { transform: translate(1px, -1px); }
+  100% { transform: translate(0); }
+}
+</style> 
+
+<div id="real-location" style="display:none; color:#19f709; font-family:monospace; font-size:18px; margin-top:20px;">
+  <p id="loc-status">🔍 Locating you...</p>
+  <p id="loc-details"></p>
+</div>
